@@ -63,4 +63,8 @@ We intend to merge __diversity_school__, __salary_potential__,  __tuition_cost__
 
 ### Exploratory Data Analysis + Visualization
 #### Insightful Graphs Generated From The Original Datasets 
-1. Pie chart of the average proportion of each demographic group ![alt text](https://github.com/yerimoh-23/MachineLearning-StartingSalaryPredictionModel/blob/main/Graphs/Average%20Diversity%20Proportion.png "Logo Title Text 1")
+1. Pie chart of the average proportion of each demographic group ![alt text](https://github.com/yerimoh-23/MachineLearning-StartingSalaryPredictionModel/blob/main/Graphs/Average%20Diversity%20Proportion.png "Graph1")
+  * This pie chart depicts the average proportion of diversity among the institutions in our data. 
+2. Boxplot comparing the early career pay across different regions in the US ![alt text](https://github.com/yerimoh-23/MachineLearning-StartingSalaryPredictionModel/blob/main/Graphs/Early%20Career%20Pay%20by%20Region.png "Graph2")
+  * This boxplot tells us that among the four regions in the United States, the Northeast has the highest mean early career pay, whereas the South has the lowest average early career pay. 
+3. 
