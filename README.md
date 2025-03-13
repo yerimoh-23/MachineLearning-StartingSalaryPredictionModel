@@ -69,7 +69,7 @@ We intend to merge __diversity_school__, __salary_potential__,  __tuition_cost__
 2. Boxplot comparing the early career pay across different regions in the US ![alt text](https://github.com/yerimoh-23/MachineLearning-StartingSalaryPredictionModel/blob/main/Graphs/Early%20Career%20Pay%20by%20Region.png "Graph2")
     * This boxplot tells us that among the four regions in the United States, the Northeast has the highest mean early career pay, whereas the South has the lowest average early career pay. 
 
-__Plots Generated With The College Dataset__
+### Plots Generated With The College Dataset
 1. Bar plots of mean early career pay for public and private institutions ![alt text](https://github.com/yerimoh-23/MachineLearning-StartingSalaryPredictionModel/blob/main/Graphs/Mean%20Early%20Career%20Pay%20by%20Institution%20Type.png "Graph3")
     * Comparison of the average early career pay between the two types of institutions. Between Private and Public institutions, Private institutions have a higher mean early career pay. This means that, on average, those who attend a private institution are expected to have a higher starting salary than those attending public institutions.
       
@@ -143,7 +143,7 @@ To fit the model, the dataset was split into training and testing subsets, alloc
 ## Results and Evaluation
 * Code Repository: https://github.com/yerimoh-23/MachineLearning-StartingSalaryPredictionModel/blob/main/final_code.ipynb
 
-## Ridge Regression Model
+### Ridge Regression Model
 The train and test scores were plotted across alpha values.
 
 ![alt text](https://github.com/yerimoh-23/MachineLearning-StartingSalaryPredictionModel/blob/main/Graphs/TrTe%20Ridge%20Regression%20Model.png "Graph11")
@@ -166,12 +166,46 @@ It can be observed from the graph that the MSE for the testing error of the regr
 
 ![alt text](https://github.com/yerimoh-23/MachineLearning-StartingSalaryPredictionModel/blob/main/Images/Regression%20Tree%20Model%20MSE%20R2.png "Image7")
 
+## Decision Tree Regression Model
+A variation of Decision Tree Model to predict a continuous target variable.
+
+Steps:
+1. Splitting: selects the best feature to split the whole dataset into subsets
+     - split is chosen to minimize the variance of the target variable in each subset
+2. Recursive Process: repeat splitting recursively, creating a tree structure
+     - each internal node of the tree represents a decision based on a feature
+     - each leaf node contains a predicted value
+3. Prediction: predicted value is the average of the target values in the leaf node
+
+__Advantages__
+- capture both linear and non-linear relationships in data
+- interpretable and can be visualized
+- handle both numerical and categorical data
+
+__Disadvantages__
+- easily overfit the training data, leading to poor generalization
+- sensitive to small variations in the data
+- can become complex and deep, making them difficult to interpret
+
 ### Final Decision Tree Regression Model
 ![alt text](https://github.com/yerimoh-23/MachineLearning-StartingSalaryPredictionModel/blob/main/Images/Final%20Decision%20Tree%20Regression%20Model.png "Image8")
 
 The mean squared error (MSE) of the multivariate linear regression model is smaller than that of the regression tree model. This indicates that the multivariate linear model performs better than the regression tree in predicting the starting salary of graduates based on the parameters.
 
 One factor to consider when using this model is that it is easy to overfit the training data, which will lead to overall poor generalization. It is also sensitive to small variations in the data; because of this, the model can become quite complex and deep, making it difficult to interpret our results. 
+
+### Prediction of the Early Salary of MHC Graduate
+__Mount Holyoke College__
+- Total annual cost: $86,702	
+- International students proportion: 23%
+- Women proportion: > 90%
+- STEM percent: 40%
+
+![alt text](https://github.com/yerimoh-23/MachineLearning-StartingSalaryPredictionModel/blob/main/Images/MHC%20Prediction.png "Image9")
+
+__Predicted Salary: $55,720__
+
+__Predicted Salary: $52,736__
 
 ## Biases and Ethical Issues
 One of the primary ethical concerns in collecting and analyzing education data is managing the privacy and confidentiality of student information. Our model heavily relies on information and data about students attending university in the United States, private data may be shared and used within our model. 
