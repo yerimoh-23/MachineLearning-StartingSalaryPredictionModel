@@ -63,4 +63,4 @@ We intend to merge __diversity_school__, __salary_potential__,  __tuition_cost__
 
 ### Exploratory Data Analysis + Visualization
 #### Insightful Graphs Generated From The Original Datasets 
-1. Pie chart of the average proportion of each demographic group
+1. Pie chart of the average proportion of each demographic group ![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 1")
