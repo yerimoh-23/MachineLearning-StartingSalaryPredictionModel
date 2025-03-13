@@ -21,30 +21,43 @@ To create a model predicting the starting salary of students attending college/u
 
 The ‘diversity_school’ table presents the race, ethnicity, and gender of students at colleges/universities in the fall of 2014. ‘Salary_potential’ displays potential alumni salaries by colleges based on median salaries for alumni with 0-5 years of experience. The ‘tuition_cost’ table provides sticker prices for the 2020-21 academic year, including school type, degree length, state, in-state vs out-of-state tuition. The ‘tuition_income’ table contains similar information to ‘tuition_cost’, but it details net costs—average tuition actually paid after scholarships/awards—based on three different income levels.
 
-`tuition_income.csv`: 209,012 rows × 7 columns
+__tuition_income.csv__: 209,012 rows × 7 columns
 - All Variables: name, state, total_price, year, campus, net_cost, income_lvl
 - Study Variables:
-  - net_cost:  true tuition after the scholarship or financial aid
+  - `net_cost`:  true tuition after the scholarship or financial aid
 
-tuition_cost.csv
-1,861 rows × 10 columns
-All Variables: name, state, state_code, type, degree_length, room_and_board, in_state_tuition, in_state_total, out_of_state_tuition, out_of_state_total
-Study Variables:
-type: types of college; public/private
-in_state_total: tuition of in-state students
-out_of_state_tuition: tuition of out-of-state students
+__tuition_cost.csv__: 1,861 rows × 10 columns
+- All Variables: name, state, state_code, type, degree_length, room_and_board, in_state_tuition, in_state_total, out_of_state_tuition, out_of_state_total
+- Study Variables:
+  - `type`: types of college; public/private
+  - `in_state_total`: tuition of in-state students
+  - `out_of_state_tuition`: tuition of out-of-state students
 
-salary_potential.csv
-902 rows × 7 columns
-All Variables: name, state_name, early_career_pay, mid_career_pay, make_world_better_percent, stem_percent
-Study Variables:
-early_career_pay: starting salary
-stem_percent: proportion of students who are majoring in STEM field
+__salary_potential.csv__: 902 rows × 7 columns
+- All Variables: name, state_name, early_career_pay, mid_career_pay, make_world_better_percent, stem_percent
+- Study Variables:
+  - `early_career_pay`: starting salary
+  - `stem_percent`: proportion of students who are majoring in STEM field
 
-diversity_school.csv
-50,656 rows × 5 columns
-All Variables: name, total_enrollment, state, category (gender, race), enrollment
-Study Variables: 1941 rows × 11 columns
-total_enrollment: total number of students enrolled in each university
-category: ‘Women’ and ‘Non-Resident Foreign’ for getting the proportion of women and international students in each college
-We intend to merge ‘diversity_school’, ‘salary_potential’,  ‘tuition_cost’, and ‘tuition_income’ to predict students' starting salaries. We are particularly interested in features such as students’ race, ethnicity, and gender as well as state, school type, degree length, and tuition when constructing a model to forecast early-career salaries. To prevent overfitting, we will extract the most significant features among these variables by calculating correlation coefficients for all the variables. 
+__diversity_school.csv__: 50,656 rows × 5 columns
+- All Variables: name, total_enrollment, state, category (gender, race), enrollment
+- Study Variables: 1941 rows × 11 columns
+  - `total_enrollment`: total number of students enrolled in each university
+  - `category`: ‘Women’ and ‘Non-Resident Foreign’ for getting the proportion of women and international students in each college
+
+We intend to merge __diversity_school__, __salary_potential__,  __tuition_cost__, and __tuition_income__ to predict students' starting salaries. We are particularly interested in features such as students’ race, ethnicity, and gender as well as state, school type, degree length, and tuition when constructing a model to forecast early-career salaries. To prevent overfitting, we will extract the most significant features among these variables by calculating correlation coefficients for all the variables. 
+
+### Data Processing
+1. __salary_potential.csv__: Select variables `name` , `early_career_pay`, and `stem_percent`
+2. __diversity_school.csv__:
+    - Select colleges with at least 2000 enrolled students. 
+    - Since we want to know the women and international students' proportion, take rows that consist of the categories 'Women' and 'Non-Resident Foreign' from the ‘category’ column. Then, divide two categories with the total enrollment to get the proportion of women and international students. Make two new tables with college names and each proportion, then merge the new `women_prop_df` and `foreign_prop_df` to the original diversity dataset.
+    - Drop all unused variables and drop duplicates, then the table only has 4 variables: `name` (for merging purposes), `total_enrollement`, `women_proportion`, and `Foreign_proportion`.
+3. __tuition_cost.csv__: Select variables `name` , `type`, `in_state_total`, and `out_of_state_total`
+4. __tuition_income.csv__: Select `net_cost`. Group by `name` and select the first values to drop duplicates.
+5. Merge all processed datasets into one and name it __college__.
+
+#### Finalized dataset: college.csv
+- 444 rows × 10 columns
+- Variables: `name`, `total_enrollment`, `women_proportion`, `Foreign_proportion`, `stem_percent`, `net_cost`, `type`, `in_state_total`, `out_of_state_total`, `early_career_pay`
+
