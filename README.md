@@ -64,7 +64,42 @@ We intend to merge __diversity_school__, __salary_potential__,  __tuition_cost__
 ### Exploratory Data Analysis + Visualization
 #### Insightful Graphs Generated From The Original Datasets 
 1. Pie chart of the average proportion of each demographic group ![alt text](https://github.com/yerimoh-23/MachineLearning-StartingSalaryPredictionModel/blob/main/Graphs/Average%20Diversity%20Proportion.png "Graph1")
-  * This pie chart depicts the average proportion of diversity among the institutions in our data. 
+    * This pie chart depicts the average proportion of diversity among the institutions in our data. 
 2. Boxplot comparing the early career pay across different regions in the US ![alt text](https://github.com/yerimoh-23/MachineLearning-StartingSalaryPredictionModel/blob/main/Graphs/Early%20Career%20Pay%20by%20Region.png "Graph2")
-  * This boxplot tells us that among the four regions in the United States, the Northeast has the highest mean early career pay, whereas the South has the lowest average early career pay. 
-3. 
+    * This boxplot tells us that among the four regions in the United States, the Northeast has the highest mean early career pay, whereas the South has the lowest average early career pay. 
+
+__Plots Generated With The College Dataset__
+1. Bar plots of mean early career pay for public and private institutions ![alt text](https://github.com/yerimoh-23/MachineLearning-StartingSalaryPredictionModel/blob/main/Graphs/Mean%20Early%20Career%20Pay%20by%20Institution%20Type.png "Graph3")
+    * Comparison of the average early career pay between the two types of institutions. Between Private and Public institutions, Private institutions have a higher mean early career pay. This means that, on average, those who attend a private institution are expected to have a higher starting salary than those attending public institutions.
+2. Relationship between the proportion of women in schools and early career pay ![alt text](https://github.com/yerimoh-23/MachineLearning-StartingSalaryPredictionModel/blob/main/Graphs/Proportion%20of%20Women%20vs%20Early%20Career%20Pay.png "Graph4")
+    * The plot shows that the data has a strong negative correlation, that schools with a higher proportion of women have lower early career pay.
+3. Relationship between the number of total enrollment in schools and early career pay ![alt text](https://github.com/yerimoh-23/MachineLearning-StartingSalaryPredictionModel/blob/main/Graphs/Total%20Enrollment%20vs%20Early%20Career%20Pay.png "Graph5")
+    * The plot shows that the data has a weak positive correlation, that schools with larger enrollment tend to have slightly higher early career pay.
+4. Relationship between the tuition of in-state and out-of-state students in schools and early career pay ![alt text](https://github.com/yerimoh-23/MachineLearning-StartingSalaryPredictionModel/blob/main/Graphs/In%3AOut%20of%20State%20Total%20vs%20Early%20Career%20Pay.png "Graph6")
+    * The plot shows that the data has a strong positive correlation, that schools with higher tuition of in and out-of-state students have higher early career pay.
+5. Relationship between the proportion of international students in schools and early career pay ![alt text](https://github.com/yerimoh-23/MachineLearning-StartingSalaryPredictionModel/blob/main/Graphs/Proportion%20of%20Internationals%20vs%20Early%20Career%20Pay.png "Graph7")
+    * The plot shows that the data has a moderate positive correlation, that schools with higher tuition of in and out-of-state students have higher early career pay.
+6. Relationship between the proportion of students in STEM fields and early career pay ![alt text](https://github.com/yerimoh-23/MachineLearning-StartingSalaryPredictionModel/blob/main/Graphs/STEM%20Percentage%20vs%20Early%20Career%20Pay.png "Graph8")
+    * The plot shows that the data has a strong positive correlation, that schools with higher tuition of in and out-of-state students have higher early career pay.
+7. Relationship between the net cost of attendance in schools and early career pay ![alt text](https://github.com/yerimoh-23/MachineLearning-StartingSalaryPredictionModel/blob/main/Graphs/Net%20Cost%20vs%20Early%20Career%20Pay.png "Graph9")
+    * The plot shows that the data has a weak positive correlation, that schools with higher net costs tend to have slightly higher early career pay
+8. Pair plot of variables of independent and response variables ![alt text](https://github.com/yerimoh-23/MachineLearning-StartingSalaryPredictionModel/blob/main/Graphs/Pair%20plot%20of%20variables%20of%20independent%20and%20response%20variables.png "Graph10")
+
+### Model Parameters & Methodologies
+Our initial variables of interest for estimating starting salary were:
+1. `total_enrollemnt`
+2. `women_proportion`
+3. `foreign_proprotion`
+4. `Stem_percent`: percent of the student body in stem
+5. `Net_cost`:  average cost of attendance after scholarship/financial aid
+6. `In_state_total`: average total cost (room & board + in-state tuition) for in-state residents in USD
+7. `Out_of_state_total`: average total cost  (room & board + in-state tuition) for out-of-state residents in USD
+8. `type`: public, private
+
+These models were commonly seen in other studies mentioned in the literature review. Type of institution and net costs of attendance were the two parameters mentioned the most in other similar studies. Our variables of interest are overall consistent with other research and models studying the relationship between the college attended and career earnings.
+
+Referring to the covariance matrix, to reduce overfitting in predictive models and increase predictive power, we selected 6 variables with higher correlations to the predictor variables.
+![alt text]( "Graph")
+This covariance matrix suggests that the net_cost and total_enrollment have weak positive correlations to early_career_pay. As a result, these two variables were not selected.
+
+The final independent variables that we use in our model are `total_enrollemnt`, `women_proportion`, `foreign_proprotion`, `Stem_percent`, `Net_cost`, `In_state_total`, `Out_of_state_total`, and `type`. The response variable is `early_carrer_pay` — estimated average early career pay in USD.
