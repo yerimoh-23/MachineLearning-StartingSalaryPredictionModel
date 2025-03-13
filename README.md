@@ -61,3 +61,6 @@ We intend to merge __diversity_school__, __salary_potential__,  __tuition_cost__
 - 444 rows × 10 columns
 - Variables: `name`, `total_enrollment`, `women_proportion`, `Foreign_proportion`, `stem_percent`, `net_cost`, `type`, `in_state_total`, `out_of_state_total`, `early_career_pay`
 
+### Exploratory Data Analysis + Visualization
+#### Insightful Graphs Generated From The Original Datasets 
+1. Pie chart of the average proportion of each demographic group
