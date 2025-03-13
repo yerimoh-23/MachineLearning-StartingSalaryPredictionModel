@@ -47,7 +47,7 @@ __diversity_school.csv__: 50,656 rows × 5 columns
 
 We intend to merge __diversity_school__, __salary_potential__,  __tuition_cost__, and __tuition_income__ to predict students' starting salaries. We are particularly interested in features such as students’ race, ethnicity, and gender as well as state, school type, degree length, and tuition when constructing a model to forecast early-career salaries. To prevent overfitting, we will extract the most significant features among these variables by calculating correlation coefficients for all the variables. 
 
-### Data Processing
+## Data Processing
 1. __salary_potential.csv__: Select variables `name` , `early_career_pay`, and `stem_percent`
 2. __diversity_school.csv__:
     - Select colleges with at least 2000 enrolled students. 
@@ -57,35 +57,43 @@ We intend to merge __diversity_school__, __salary_potential__,  __tuition_cost__
 4. __tuition_income.csv__: Select `net_cost`. Group by `name` and select the first values to drop duplicates.
 5. Merge all processed datasets into one and name it __college__.
 
-#### Finalized dataset: college.csv
+### Finalized dataset: college.csv
 - 444 rows × 10 columns
 - Variables: `name`, `total_enrollment`, `women_proportion`, `Foreign_proportion`, `stem_percent`, `net_cost`, `type`, `in_state_total`, `out_of_state_total`, `early_career_pay`
 
-### Exploratory Data Analysis + Visualization
-#### Insightful Graphs Generated From The Original Datasets 
+## Exploratory Data Analysis + Visualization
+### Insightful Graphs Generated From The Original Datasets 
 1. Pie chart of the average proportion of each demographic group ![alt text](https://github.com/yerimoh-23/MachineLearning-StartingSalaryPredictionModel/blob/main/Graphs/Average%20Diversity%20Proportion.png "Graph1")
-    * This pie chart depicts the average proportion of diversity among the institutions in our data. 
+    * This pie chart depicts the average proportion of diversity among the institutions in our data.
+      
 2. Boxplot comparing the early career pay across different regions in the US ![alt text](https://github.com/yerimoh-23/MachineLearning-StartingSalaryPredictionModel/blob/main/Graphs/Early%20Career%20Pay%20by%20Region.png "Graph2")
     * This boxplot tells us that among the four regions in the United States, the Northeast has the highest mean early career pay, whereas the South has the lowest average early career pay. 
 
 __Plots Generated With The College Dataset__
 1. Bar plots of mean early career pay for public and private institutions ![alt text](https://github.com/yerimoh-23/MachineLearning-StartingSalaryPredictionModel/blob/main/Graphs/Mean%20Early%20Career%20Pay%20by%20Institution%20Type.png "Graph3")
     * Comparison of the average early career pay between the two types of institutions. Between Private and Public institutions, Private institutions have a higher mean early career pay. This means that, on average, those who attend a private institution are expected to have a higher starting salary than those attending public institutions.
+      
 2. Relationship between the proportion of women in schools and early career pay ![alt text](https://github.com/yerimoh-23/MachineLearning-StartingSalaryPredictionModel/blob/main/Graphs/Proportion%20of%20Women%20vs%20Early%20Career%20Pay.png "Graph4")
     * The plot shows that the data has a strong negative correlation, that schools with a higher proportion of women have lower early career pay.
+      
 3. Relationship between the number of total enrollment in schools and early career pay ![alt text](https://github.com/yerimoh-23/MachineLearning-StartingSalaryPredictionModel/blob/main/Graphs/Total%20Enrollment%20vs%20Early%20Career%20Pay.png "Graph5")
     * The plot shows that the data has a weak positive correlation, that schools with larger enrollment tend to have slightly higher early career pay.
+      
 4. Relationship between the tuition of in-state and out-of-state students in schools and early career pay ![alt text](https://github.com/yerimoh-23/MachineLearning-StartingSalaryPredictionModel/blob/main/Graphs/In%3AOut%20of%20State%20Total%20vs%20Early%20Career%20Pay.png "Graph6")
     * The plot shows that the data has a strong positive correlation, that schools with higher tuition of in and out-of-state students have higher early career pay.
+      
 5. Relationship between the proportion of international students in schools and early career pay ![alt text](https://github.com/yerimoh-23/MachineLearning-StartingSalaryPredictionModel/blob/main/Graphs/Proportion%20of%20Internationals%20vs%20Early%20Career%20Pay.png "Graph7")
     * The plot shows that the data has a moderate positive correlation, that schools with higher tuition of in and out-of-state students have higher early career pay.
+      
 6. Relationship between the proportion of students in STEM fields and early career pay ![alt text](https://github.com/yerimoh-23/MachineLearning-StartingSalaryPredictionModel/blob/main/Graphs/STEM%20Percentage%20vs%20Early%20Career%20Pay.png "Graph8")
     * The plot shows that the data has a strong positive correlation, that schools with higher tuition of in and out-of-state students have higher early career pay.
+      
 7. Relationship between the net cost of attendance in schools and early career pay ![alt text](https://github.com/yerimoh-23/MachineLearning-StartingSalaryPredictionModel/blob/main/Graphs/Net%20Cost%20vs%20Early%20Career%20Pay.png "Graph9")
     * The plot shows that the data has a weak positive correlation, that schools with higher net costs tend to have slightly higher early career pay
+      
 8. Pair plot of variables of independent and response variables ![alt text](https://github.com/yerimoh-23/MachineLearning-StartingSalaryPredictionModel/blob/main/Graphs/Pair%20plot%20of%20variables%20of%20independent%20and%20response%20variables.png "Graph10")
 
-### Model Parameters & Methodologies
+## Model Parameters & Methodologies
 Our initial variables of interest for estimating starting salary were:
 1. `total_enrollemnt`
 2. `women_proportion`
@@ -99,30 +107,78 @@ Our initial variables of interest for estimating starting salary were:
 These models were commonly seen in other studies mentioned in the literature review. Type of institution and net costs of attendance were the two parameters mentioned the most in other similar studies. Our variables of interest are overall consistent with other research and models studying the relationship between the college attended and career earnings.
 
 Referring to the covariance matrix, to reduce overfitting in predictive models and increase predictive power, we selected 6 variables with higher correlations to the predictor variables.
-  * Covariance Matrix with all 8 variables ![alt text](https://github.com/yerimoh-23/MachineLearning-StartingSalaryPredictionModel/blob/main/Graphs/Covariance%20Matrix%20with%20all%208%20variables.png "Graph11")
-  * Covariance Matrix with 7 variables      ![alt text](https://github.com/yerimoh-23/MachineLearning-StartingSalaryPredictionModel/blob/main/Graphs/Covariance%20Matrix%20with%207%20variables%20(excludes%20total_enrollment).png "Graph12")
+  * Covariance Matrix with all 8 variables ![alt text](https://github.com/yerimoh-23/MachineLearning-StartingSalaryPredictionModel/blob/main/Images/Covariance%20Matrix%20with%20all%208%20variables.png "Image1")
+  * Covariance Matrix with 7 variables      ![alt text](https://github.com/yerimoh-23/MachineLearning-StartingSalaryPredictionModel/blob/main/Images/Covariance%20Matrix%20with%207%20variables%20(excludes%20total_enrollment).png "Image2")
     * excludes total_enrollment
 
 This covariance matrix suggests that the net_cost and total_enrollment have weak positive correlations to early_career_pay. As a result, these two variables were not selected.
 
 The final independent variables that we use in our model are `total_enrollemnt`, `women_proportion`, `foreign_proprotion`, `Stem_percent`, `Net_cost`, `In_state_total`, `Out_of_state_total`, and `type`. The response variable is `early_carrer_pay` — estimated average early career pay in USD.
-![alt text](https://github.com/yerimoh-23/MachineLearning-StartingSalaryPredictionModel/blob/main/Graphs/FinalData%20Head.png "FinalData")
 
-#### Ridge Regression Model
+![alt text](https://github.com/yerimoh-23/MachineLearning-StartingSalaryPredictionModel/blob/main/Images/FinalData%20Head.png "Image3")
+
+### Ridge Regression Model
 Before fitting the model, the categorical parameter ‘type’ was converted into indicator variables.
 
+![alt text](https://github.com/yerimoh-23/MachineLearning-StartingSalaryPredictionModel/blob/main/Images/convert%20type.png "Image4")
 
+An array of 30 alpha values that are logarithmically spaced between 10-5  and 103 were generated. These values are used to tune the model.
 
+![alt text](https://github.com/yerimoh-23/MachineLearning-StartingSalaryPredictionModel/blob/main/Images/alpha%20values.png "Image5")
 
+The variables were standardized to ensure they were on a consistent scale. The dataset was split into a training set and a test set. The training set was used to fit a ridge regression model and the test set was used to evaluate the model fitted with the training set. 
 
+### Multivariate Linear Regression
+The multivariate linear regression model evaluates the relationship between multiple dependent variables and a single predictor variable. One primary advantage of this model is its capability of capturing the complexity of real-world problems. By considering multiple independent parameters, we can accommodate more factors affecting the dependent variable. Consequently,  this helps minimize errors and biases in estimation. Similarly, the multivariate linear regression model estimates the average starting salary of graduates based on the independent variables listed at the beginning of this section. 
 
+### Decision Tree Regression Model
+The regression tree model is a variation of the decision tree model that predicts a continuous target variable. The regression tree model is more appropriate for this dataset because the outcome variable, early_career_pay, is a continuous numeric variable. We chose to fit the regression tree as it is advantageous in capturing both linear and non-linear relationships within our dataset. Our data consists of numerical and categorical data, the decision tree regression model can handle both. It is also easily interpretable and allows us to produce clear visualizations.
 
+For the regression tree model, the categorical variable, type, is converted into a numerical format using the label encoding technique. This creates a binary representation of the 'type' variable where 'public' institutions are represented by 1 and ‘private’ are represented by 0. This encoding allows the model to work with the 'type' variable more effectively.
 
+The data is split into subsets by selecting the best feature to split by to minimize the variance of the target variable (Early Career Pay) in each subset. Then, the data is recursively split, creating the tree structure where each internal node represents a decision based on a feature, and each leaf node contains a predicted value. Lastly, the predicted value is given by taking the average of the target values in the leaf node. Additionally, when training the regression tree model, setting a seed is necessary for retrieving consistent results. 
 
+To fit the model, the dataset was split into training and testing subsets, allocating 80% for training and 20% for testing. Then, the model was trained using the training set, and its performance was evaluated on the testing set. The model was trained with varying levels of complexity. For each model, the mean squared error (MSE) was calculated. The MSE values tell how well our model performs at different levels of complexity.
 
+## Results and Evaluation
+* Code Repository: https://github.com/yerimoh-23/MachineLearning-StartingSalaryPredictionModel/blob/main/final_code.ipynb
 
+## Ridge Regression Model
+The train and test scores were plotted across alpha values.
 
+![alt text](https://github.com/yerimoh-23/MachineLearning-StartingSalaryPredictionModel/blob/main/Graphs/TrTe%20Ridge%20Regression%20Model.png "Graph11")
 
+According to the training score and test score plot, the ridge regression model performs better with very small alpha values. It suggests that the model is performing better with minimal regulation and that the multicollinearity in the dataset is low; the dataset is not very complex, and it is not unstable.
 
+### Multivariate Linear Regression Model
+The mean squared error (MSE) calculated for this model is approximately 13,155,129.58 and $$R^2$$ approximately equal to 0.80. While the MSE might appear large, it's not unexpected given the range of the response variable, early_career_pay, which spans from $32,500 to $86,300.  The multivariate linear regression model accounts for a large portion of the variance observed in the data, suggesting a relatively strong relationship between the predictors and starting salary.
 
+![alt text](https://github.com/yerimoh-23/MachineLearning-StartingSalaryPredictionModel/blob/main/Images/Multivariate%20Linear%20Regression%20MSE%20R2.png "Image6")
 
+### Regression Tree Model
+A pairplot with each plot comparing 'Early Career Pay' against the independent variables while distinguishing between different types of colleges (public, private)
+![alt text](https://github.com/yerimoh-23/MachineLearning-StartingSalaryPredictionModel/blob/main/Graphs/pairplots%20against%20independent%20variables.png "Graph12")
+
+The plot shows mean squared error (MSE) values for regression trees trained on both training and testing data across different maximum depths, ranging from 1 to 20. The error visualization helps in identifying the optimal max depth, where the model balances performance and generalization.
+![alt text](https://github.com/yerimoh-23/MachineLearning-StartingSalaryPredictionModel/blob/main/Graphs/Training%20and%20Testing%20Errors%20Across%20Model%20Complexity.png "Graph13")
+
+It can be observed from the graph that the MSE for the testing error of the regression tree with a maximum depth of 4 is the smallest. That is, the optimal regression tree for forecasting average early career pay is a model with a maximum of four levels of decision nodes. The MSE and r-score for our regression tree model are approximately 22,763,805.714 and 0.5875, respectively.
+
+![alt text](https://github.com/yerimoh-23/MachineLearning-StartingSalaryPredictionModel/blob/main/Images/Regression%20Tree%20Model%20MSE%20R2.png "Image7")
+
+### Final Decision Tree Regression Model
+![alt text](https://github.com/yerimoh-23/MachineLearning-StartingSalaryPredictionModel/blob/main/Images/Final%20Decision%20Tree%20Regression%20Model.png "Image8")
+
+The mean squared error (MSE) of the multivariate linear regression model is smaller than that of the regression tree model. This indicates that the multivariate linear model performs better than the regression tree in predicting the starting salary of graduates based on the parameters.
+
+One factor to consider when using this model is that it is easy to overfit the training data, which will lead to overall poor generalization. It is also sensitive to small variations in the data; because of this, the model can become quite complex and deep, making it difficult to interpret our results. 
+
+## Biases and Ethical Issues
+One of the primary ethical concerns in collecting and analyzing education data is managing the privacy and confidentiality of student information. Our model heavily relies on information and data about students attending university in the United States, private data may be shared and used within our model. 
+
+Additionally, some colleges and universities may choose to share more information and data, which could create unintentional biases within our datasets. For example, if a particular institution has higher-earning starting career salaries on average, they may be more willing to release more information and data. The size of the institution may also add some biases. Schools with larger enrollment may have a larger amount of students earning a high salary, but a smaller school may have a higher percentage of students that earn a high salary. 
+
+## Limitations & Future Work
+One concern we anticipate is merging data from different years, as the data in the ‘diversity_school’ table is from 2014, whereas the data from the ‘tuition_cost’ table pertains to the 2020-21 academic year. While we have access to tuition data from 2014, filling in this data for each school would need to be done manually. 
+
+Also, one of the variables we have used to predict is the proportion of international students in each college. Since the dataset only collects graduates who work in the United States, it does not contain the students who are working in other countries. Many international students might go back to their countries, and some domestic students would also work in other countries, which is a limitation in collecting the data of all the graduates from the colleges. Since all members of our team are international students, the information collected from the international students of the colleges would be more helpful for us to predict our starting salary.
