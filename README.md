@@ -99,7 +99,30 @@ Our initial variables of interest for estimating starting salary were:
 These models were commonly seen in other studies mentioned in the literature review. Type of institution and net costs of attendance were the two parameters mentioned the most in other similar studies. Our variables of interest are overall consistent with other research and models studying the relationship between the college attended and career earnings.
 
 Referring to the covariance matrix, to reduce overfitting in predictive models and increase predictive power, we selected 6 variables with higher correlations to the predictor variables.
-![alt text]( "Graph")
+  * Covariance Matrix with all 8 variables ![alt text](https://github.com/yerimoh-23/MachineLearning-StartingSalaryPredictionModel/blob/main/Graphs/Covariance%20Matrix%20with%20all%208%20variables.png "Graph11")
+  * Covariance Matrix with 7 variables      ![alt text](https://github.com/yerimoh-23/MachineLearning-StartingSalaryPredictionModel/blob/main/Graphs/Covariance%20Matrix%20with%207%20variables%20(excludes%20total_enrollment).png "Graph12")
+    * excludes total_enrollment
+
 This covariance matrix suggests that the net_cost and total_enrollment have weak positive correlations to early_career_pay. As a result, these two variables were not selected.
 
 The final independent variables that we use in our model are `total_enrollemnt`, `women_proportion`, `foreign_proprotion`, `Stem_percent`, `Net_cost`, `In_state_total`, `Out_of_state_total`, and `type`. The response variable is `early_carrer_pay` — estimated average early career pay in USD.
+![alt text](https://github.com/yerimoh-23/MachineLearning-StartingSalaryPredictionModel/blob/main/Graphs/FinalData%20Head.png "FinalData")
+
+#### Ridge Regression Model
+Before fitting the model, the categorical parameter ‘type’ was converted into indicator variables.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
