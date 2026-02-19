@@ -168,7 +168,6 @@ Purpose:
 
 Model Selection:
 - Tree depth evaluated from 1–20.
-- Optimal depth: 4.
 
    ![alt text](https://github.com/yerimoh-23/MachineLearning-StartingSalaryPredictionModel/blob/main/Graphs/Training%20and%20Testing%20Errors%20Across%20Model%20Complexity.png "Graph13")
 
@@ -177,6 +176,8 @@ Model Selection:
 Results:
 - Test MSE ≈ 22.8M
 - Test R² ≈ 0.59
+
+Optimal depth: 4 (based on MSE and R²)
 
 **Interpretation**:
 Although the tree model captures non-linear splits, it did not outperform linear approaches. This suggests that early career salary is primarily explained by relatively stable structural relationships rather than complex non-linear interactions.
